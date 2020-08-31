@@ -1,0 +1,252 @@
+  
+## 01
+
+# Print out 2 to the 65536 power
+# (try doing the same thing in the JS console and see what it outputs)
+
+print(2**65536)
+
+## 02
+
+"""
+Python is a strongly-typed language under the hood, which means
+that the types of values matter, especially when we're trying
+to perform operations on them.
+Note that if you try running the following code without making any
+changes, you'll get a TypeError saying you can't perform an operation
+on a string and an integer.
+"""
+
+x = 5
+y = "7"
+
+# Write a print statement that combines x + y into the integer value 12
+
+print(x+int(y))
+
+# Write a print statement that combines x + y into the string value 57
+
+print(str(x)+y)
+
+## 03
+
+"""
+In this exercise, you'll be playing around with the sys module,
+which allows you to access many system specific variables and
+methods, and the os module, which gives you access to lower-
+level operating system functionality.
+"""
+
+import sys
+# See docs for the sys module: https://docs.python.org/3.7/library/sys.html
+
+# Print out the command line arguments in sys.argv, one per line:
+for arg in sys.argv:
+    print(arg)
+
+# Print out the OS platform you're using:
+print(sys.platform)
+
+# Print out the version of Python you're using:
+print(sys.version)
+
+import os
+# See the docs for the OS module: https://docs.python.org/3.7/library/os.html
+
+# Print the current process ID
+print(os.getpid())
+
+# Print the current working directory (cwd):
+print(os.getcwd())
+
+# Print out your machine's login name
+print(os.getlogin())
+
+## 04
+
+"""
+Python provides a number of ways to perform printing. Research
+how to print using the printf operator, the `format` string 
+method, and by using f-strings.
+"""
+
+x = 10
+y = 2.24552
+z = "I like turtles!"
+
+# Using the printf operator (%), print the following feeding in the values of x,
+# y, and z:
+# x is 10, y is 2.25, z is "I like turtles!"
+print('x is %d, y is %.2f, z is %s' % (x,y,z))
+
+# Use the 'format' string method to print the same thing
+print('x is {:d}, y is {:.2f}, z is {}'.format(x,y,z))
+
+# Finally, print the same thing using an f-string
+print(f'x is {x}, y is {y:.2f}, z is {z}')
+
+## 05
+
+# For the exercise, look up the methods and functions that are available for use
+# with Python lists.
+
+x = [1, 2, 3]
+y = [8, 9, 10]
+
+# For the following, DO NOT USE AN ASSIGNMENT (=).
+
+# Change x so that it is [1, 2, 3, 4]
+# YOUR CODE HERE
+x.append(4)
+print(x)
+
+# Using y, change x so that it is [1, 2, 3, 4, 8, 9, 10]
+# YOUR CODE HERE
+x.extend(y)
+print(x)
+
+# Change x so that it is [1, 2, 3, 4, 9, 10]
+# YOUR CODE HERE
+x.pop(4)
+print(x)
+
+# Change x so that it is [1, 2, 3, 4, 9, 99, 10]
+# YOUR CODE HERE
+x.insert(5,99)
+print(x)
+
+# Print the length of list x
+# YOUR CODE HERE
+print(len(x))
+
+# Print all the values in x multiplied by 1000
+# YOUR CODE HERE
+print([num*1000 for num in x])
+
+## 06
+
+"""
+Python tuples are sort of like lists, except they're immutable and
+are usually used to hold heterogenous data, as opposed to lists
+which are typically used to hold homogenous data. Tuples use
+parens instead of square brackets.
+More specifically, tuples are faster than lists. If you're looking
+to just define a constant set of values and that set of values
+never needs to be mutated, use a tuple instead of a list.
+Additionally, your code will be safer if you opt to "write-protect"
+data that does not need to be changed. Tuples enforce immutability
+automatically.
+"""
+
+# Example:
+
+import math
+
+def dist(a, b):
+    """Compute the distance between two x,y points."""
+    x0, y0 = a  # Destructuring assignment
+    x1, y1 = b
+
+    return math.sqrt((x1 - x0)**2 + (y1 - y0)**2)
+
+a = (2, 7)   # <-- x,y coordinates stored in tuples
+b = (-14, 72)
+
+# Prints "Distance is 66.94"
+print("Distance is: {:.2f}".format(dist(a, b)))
+
+
+
+# Write a function `print_tuple` that prints all the values in a tuple
+
+def print_tuple(t):
+    for num in t:
+        print(num)
+
+t = (1, 2, 5, 7, 99)
+print_tuple(t)  # Prints 1 2 5 7 99, one per line
+
+# Declare a tuple of 1 element then print it
+u = (1,)  # What needs to be added to make this work?
+print_tuple(u)
+
+## 07
+
+"""
+Python exposes a terse and intuitive syntax for performing 
+slicing on lists and strings. This makes it easy to reference
+only a portion of a list or string. 
+This Stack Overflow answer provides a brief but thorough
+overview: https://stackoverflow.com/a/509295
+Use Python's slice syntax to achieve the following:
+"""
+
+a = [2, 4, 1, 7, 9, 6]
+
+# Output the second element: 4:
+print(a[1])
+
+# Output the second-to-last element: 9
+print(a[-2])
+
+# Output the last three elements in the array: [7, 9, 6]
+print(a[-3:])
+
+# Output the two middle elements in the array: [1, 7]
+print(a[2:4])
+
+# Output every element except the first one: [4, 1, 7, 9, 6]
+print(a[1:])
+
+# Output every element except the last one: [2, 4, 1, 7, 9]
+print(a[:-1])
+
+# For string s...
+
+s = "Hello, world!"
+
+# Output just the 8th-12th characters: "world"
+print(s[7:12])
+
+## 08
+
+"""
+List comprehensions are one cool and unique feature of Python.
+They essentially act as a terse and concise way of initializing
+and populating a list given some expression that specifies how
+the list should be populated. 
+Take a look at https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
+for more info regarding list comprehensions.
+"""
+
+# Write a list comprehension to produce the array [1, 2, 3, 4, 5]
+
+y = [x for x in range(1,6)]
+
+print (y)
+
+# Write a list comprehension to produce the cubes of the numbers 0-9:
+# [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+y = [x**3 for x in range(10)]
+
+print(y)
+
+# Write a list comprehension to produce the uppercase version of all the
+# elements in array a. Hint: "foo".upper() is "FOO".
+
+a = ["foo", "bar", "baz"]
+
+y = [elem.upper() for elem in a]
+
+print(y)
+
+# Use a list comprehension to create a list containing only the _even_ elements
+# the user entered into list x.
+
+x = input("Enter comma-separated numbers: ").split(',')
+
+# What do you need between the square brackets to make it work?
+y = [int(elem) for elem in x if int(elem)%2==0]
+
+print(y)
